@@ -1,0 +1,19 @@
+{
+  "desk": {"src": "assets/desk.svg", "w": 1600, "h": 900},
+  "wave": "assets/wave.svg",
+  "tag_y": 0.76,
+  "dogs": {
+    "Bailey": {
+      "eyes": [415, 415, 545, 465],
+      "mouth": [435, 466, 525, 552],
+      "tag_x": 0.30,
+      "sprites": {"ah": "assets/bailey-ah.svg", "grin": "assets/bailey-grin.svg", "blink": "assets/bailey-blink.svg"}
+    },
+    "Charlie": {
+      "eyes": [1000, 385, 1176, 450],
+      "mouth": [1030, 451, 1146, 565],
+      "tag_x": 0.68,
+      "sprites": {"ah": "assets/charlie-ah.svg", "grin": "assets/charlie-grin.svg", "blink": "assets/charlie-blink.svg"}
+    }
+  }
+}

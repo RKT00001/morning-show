@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Your Bailey and Charlie Guide</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face { font-family: "Fredoka"; font-style: normal; font-weight: 300 700; font-display: swap; src: url(fonts/fredoka-latin.woff2) format("woff2"); }
+  @font-face { font-family: "Lexend"; font-style: normal; font-weight: 100 900; font-display: swap; src: url(fonts/lexend-latin.woff2) format("woff2"); }
+  :root {
+    --ink: #23303b; --soft: #55656f; --sky: #e8f4fd; --sky2: #cfe6f7; --sun: #fff4cc; --apricot: #c4661a; --apricot-bg: #fdeede;
+    --line: #d5e3ee; --green: #2a8f52; --red: #b3392b; --blue: #2f6fd1;
+    --head: Fredoka, "Trebuchet MS", "Segoe UI Rounded", system-ui, sans-serif;
+    --body: Lexend, "Segoe UI", system-ui, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 12px; }
+  body { margin: 0; background: #fff; color: var(--ink); font: 16px/1.55 var(--body); }
+  main { max-width: 880px; margin: 0 auto; padding: 24px 16px 48px; }
+  p { margin: 0 0 8px; }
+  a { color: var(--blue); }
+  b, strong { font-weight: 600; }
+
+  header { display: flex; gap: 20px; align-items: center; margin-bottom: 16px; }
+  header img { width: 230px; max-width: 38%; height: auto; border-radius: 16px; flex: none; }
+  h1 { font: 600 32px/1.12 var(--head); margin: 0 0 8px; }
+  h2 { font: 600 24px/1.15 var(--head); margin: 0 0 10px; color: var(--apricot); }
+  h2 .tag { display: block; font: 400 14px/1.4 var(--body); color: var(--soft); margin-top: 2px; }
+  h3 { font: 600 17px/1.2 var(--head); margin: 0 0 4px; }
+  section { margin: 34px 0 0; }
+  .links { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 12px 0 0; }
+  .link { display: block; background: var(--sky); border-radius: 12px; padding: 10px 14px; text-decoration: none; color: var(--ink); }
+  .link small { display: block; font-size: 13px; color: var(--soft); }
+  .link b { display: block; font: 600 17px/1.25 var(--head); }
+  .link span { display: block; font-size: 14px; word-break: break-all; color: var(--blue); font-weight: 600; }
+
+  nav.jump { display: flex; flex-wrap: wrap; gap: 6px 8px; margin: 14px 0 0; font-size: 14px; }
+  nav.jump a { text-decoration: none; background: var(--sun); color: var(--ink); border-radius: 99px; padding: 3px 12px; }
+  nav.jump a:hover, nav.jump a:focus-visible { background: #ffe9a0; }
+
+  code, .kbd, .btn { font-family: inherit; }
+  code { background: var(--sun); padding: 1px 6px; border-radius: 6px; font-size: .95em; }
+  .btn { display: inline-block; font-weight: 600; background: var(--sky); border: 1px solid var(--sky2); border-radius: 8px; padding: 0 7px; white-space: nowrap; }
+  .kbd { display: inline-block; font-weight: 600; border: 1px solid #b9cbd9; border-bottom-width: 2px; border-radius: 6px; padding: 0 7px; background: #fff; min-width: 1.6em; text-align: center; }
+  .nw { white-space: nowrap; }
+  .small { color: var(--soft); font-size: 14px; }
+  .note { background: var(--sun); border-radius: 12px; padding: 9px 14px; margin: 10px 0 0; font-size: 15px; }
+
+  /* the once-only checklist */
+  ol.once { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+  ol.once > li { display: grid; grid-template-columns: 28px 1fr; gap: 12px; align-items: start; background: #fff; border: 2px solid var(--line); border-radius: 14px; padding: 12px 14px; }
+  ol.once > li::before { content: ""; width: 22px; height: 22px; margin-top: 3px; border: 2.5px solid var(--apricot); border-radius: 6px; background: #fff; }
+  ol.once .body > :last-child { margin-bottom: 0; }
+  ol.once ul { margin: 4px 0 6px; padding-left: 20px; }
+  ol.once li li { margin-bottom: 2px; }
+  .withpic { display: grid; grid-template-columns: 1fr 250px; gap: 16px; align-items: start; }
+  .shot { margin: 0; }
+  .shot img { display: block; width: 100%; height: auto; border-radius: 10px; border: 1px solid var(--line); background: var(--sky); }
+  .shot figcaption { font-size: 12.5px; color: var(--soft); margin-top: 3px; line-height: 1.35; }
+  .shots2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .tline { font: 12px/1.45 ui-monospace, Consolas, Menlo, monospace; background: #f3f6f9; border: 1px solid var(--line); border-radius: 8px; padding: 6px 9px; margin: 6px 0 0; overflow-wrap: anywhere; }
+
+  /* the four morning steps */
+  ol.steps { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; counter-reset: s; }
+  ol.steps > li { counter-increment: s; display: grid; grid-template-columns: 44px 1fr 300px; gap: 14px; align-items: start; background: var(--sky); border-radius: 16px; padding: 14px 16px; }
+  ol.steps > li::before { content: counter(s); font: 600 26px/44px var(--head); width: 44px; height: 44px; text-align: center; background: var(--apricot); color: #fff; border-radius: 50%; }
+  ol.steps .what > :last-child { margin-bottom: 0; }
+  ol.steps .pic { min-width: 0; }
+  ol.steps > li.big { grid-template-columns: 44px 1fr; }
+  ol.steps > li.big .pic { grid-column: 2; max-width: 640px; }
+  .steps .shot img { border-color: #fff; }
+
+  /* pictures of what to expect in Claude (drawn, not screenshots) */
+  .claude { border: 1px solid var(--sky2); background: #fff; border-radius: 12px; padding: 10px; font-size: 13.5px; }
+  .claude .cap { font-size: 12.5px; color: var(--soft); margin: 0 0 6px; }
+  .typebox { display: flex; gap: 8px; align-items: flex-end; border: 1.5px solid #b9cbd9; border-radius: 12px; padding: 8px 10px; background: #fcfdfe; line-height: 1.4; }
+  .typebox .send { flex: none; width: 24px; height: 24px; border-radius: 7px; background: var(--apricot); color: #fff; display: grid; place-items: center; font-weight: 600; font-size: 14px; }
+  .cblock { border-radius: 10px; overflow: hidden; border: 1px solid #3a4652; background: #27303a; color: #d6dee6; }
+  .cblock .bar { display: flex; justify-content: space-between; align-items: center; padding: 4px 8px; background: #3a4652; font-size: 12px; }
+  .cblock .copy { background: #ffe9a0; color: #23303b; font-weight: 600; border-radius: 6px; padding: 1px 9px; box-shadow: 0 0 0 2px var(--apricot); }
+  .cblock pre { margin: 0; padding: 7px 9px; font: 11px/1.45 ui-monospace, Consolas, Menlo, monospace; white-space: pre; overflow: hidden; }
+
+  /* tables */
+  table { width: 100%; border-collapse: collapse; font-size: 15px; }
+  th { text-align: left; font: 600 14px var(--head); letter-spacing: .02em; color: #fff; background: var(--apricot); padding: 7px 12px; }
+  th:first-child { border-radius: 10px 0 0 0; } th:last-child { border-radius: 0 10px 0 0; }
+  td { padding: 8px 12px; vertical-align: top; border-bottom: 1px solid var(--line); }
+  tbody tr:nth-child(even) td { background: #f7fbfe; }
+  td:first-child { width: 38%; }
+  .say { font-weight: 600; }
+  td p { margin: 0 0 4px; } td p:last-child { margin: 0; }
+  td ul { margin: 2px 0 0; padding-left: 18px; } td li { margin-bottom: 2px; }
+  .msg { color: var(--red); font-weight: 600; }
+  .tbl-pic { margin-top: 6px; max-width: 300px; }
+
+  .during { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .during > div { background: var(--sky); border-radius: 14px; padding: 12px 16px; }
+  .during dl { display: grid; grid-template-columns: auto 1fr; gap: 5px 12px; margin: 0; align-items: baseline; }
+  .during dt { white-space: nowrap; } .during dd { margin: 0; }
+  .during ul { margin: 0; padding-left: 20px; } .during li { margin-bottom: 4px; }
+
+  ul.safe { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; }
+  ul.safe li { background: var(--apricot-bg); border-radius: 12px; padding: 9px 14px; }
+  footer { margin-top: 30px; color: var(--soft); font-size: 13px; text-align: center; }
+
+  @media screen and (max-width: 760px) {
+    header { flex-direction: column; align-items: flex-start; }
+    header img { max-width: 100%; width: 100%; }
+    h1 { font-size: 27px; }
+    .links, .during, .withpic { grid-template-columns: 1fr; }
+    ol.steps > li { grid-template-columns: 44px 1fr; }
+    ol.steps .pic, ol.steps > li.big .pic { grid-column: 1 / -1; max-width: none; }
+    ol.once > li { grid-template-columns: 24px 1fr; padding: 12px; }
+    table, thead, tbody, tr, th, td { display: block; width: 100%; }
+    thead { display: none; }
+    tr { border: 1px solid var(--line); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+    td:first-child { width: 100%; background: var(--sun) !important; border-bottom: 0; }
+    td { border-bottom: 0; }
+    .tbl-pic { max-width: 100%; }
+  }
+
+  @media print {
+    @page { size: A4; margin: 7mm 9mm; }
+    html { scroll-behavior: auto; }
+    body { font-size: 8.4pt; line-height: 1.32; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    main { max-width: none; padding: 0; }
+    nav.jump, footer, .screenonly { display: none !important; }
+    section { margin-top: 7px; }
+    h1 { font-size: 19pt; margin-bottom: 2px; }
+    h2 { font-size: 12.5pt; margin-bottom: 4px; }
+    h2 .tag { font-size: 7.6pt; display: inline; margin-left: 6px; }
+    h3 { font-size: 9.4pt; margin-bottom: 1px; }
+    p { margin-bottom: 3px; }
+    header { gap: 12px; margin-bottom: 4px; }
+    header img { width: 36mm; max-width: none; border-radius: 8px; }
+    .links { margin-top: 4px; gap: 6px; }
+    .link { padding: 3px 9px; border-radius: 8px; }
+    .link small { font-size: 7.4pt; } .link span { font-size: 8.4pt; color: var(--ink); }
+    .small { font-size: 7.6pt; }
+    .note { font-size: 8pt; padding: 3px 8px; margin-top: 4px; border-radius: 8px; }
+    .btn { padding: 0 5px; border-radius: 6px; }
+    .kbd { padding: 0 5px; min-width: 0; }
+    code { padding: 0 4px; }
+    ol.once { grid-template-columns: 1fr 1fr; gap: 4px 6px; }
+    ol.once > li.full { grid-column: 1 / -1; }
+    ol.once > li { padding: 4px 8px; gap: 7px; grid-template-columns: 14px 1fr; border-width: 1.5px; border-radius: 9px; break-inside: avoid; }
+    ol.once > li::before { width: 12px; height: 12px; margin-top: 1px; border-width: 2px; border-radius: 3px; }
+    ol.once ul { margin: 1px 0 1px; padding-left: 13px; }
+    .withpic { grid-template-columns: 1fr; }
+    .shot figcaption { font-size: 6.8pt; margin-top: 1px; }
+    .shot img { border-radius: 5px; }
+    .tline { font-size: 6.8pt; padding: 3px 6px; margin-top: 2px; }
+    ol.steps { gap: 4px; }
+    ol.steps > li, ol.steps > li.big { grid-template-columns: 22px 1fr 54mm; gap: 8px; padding: 5px 9px; border-radius: 10px; break-inside: avoid; }
+    ol.steps > li::before { font-size: 12pt; line-height: 22px; width: 22px; height: 22px; }
+    ol.steps > li.big .pic { grid-column: auto; max-width: none; }
+    .shots2 { gap: 4px; }
+    .claude { padding: 4px 6px; font-size: 7.4pt; border-radius: 7px; }
+    .claude .cap { font-size: 6.6pt; margin-bottom: 2px; }
+    .typebox { padding: 3px 6px; border-radius: 7px; gap: 5px; }
+    .typebox .send { width: 13px; height: 13px; font-size: 7pt; border-radius: 4px; }
+    .cblock { border-radius: 6px; }
+    .cblock .bar { font-size: 6.6pt; padding: 1px 5px; }
+    .cblock pre { font-size: 5.8pt; padding: 2px 5px; }
+    table { font-size: 7.2pt; line-height: 1.28; }
+    th { font-size: 7.2pt; padding: 1px 8px; }
+    td { padding: 1.5px 8px; }
+    td:first-child { width: 43%; }
+    #wrong td:first-child { width: 26%; }
+    td ul { padding-left: 11px; margin: 0; } td li { margin-bottom: 0; }
+    tr { break-inside: avoid; }
+    .during { gap: 8px; grid-template-columns: .9fr 1.1fr; }
+    .during > div { padding: 4px 10px; border-radius: 9px; }
+    .during dl { gap: 1px 8px; grid-template-columns: auto 1fr auto 1fr; }
+    .during li { margin-bottom: 1px; }
+    ul.safe { grid-template-columns: 1fr 1fr; gap: 4px; }
+    ul.safe li { padding: 3px 8px; border-radius: 7px; font-size: 7.8pt; }
+    .pb { break-before: page; margin-top: 0; }
+    #safe, #during { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+<header>
+  <img src="assets/real/wave.webp" alt="Bailey and Charlie waving from their desk" width="2752" height="1536">
+  <div>
+    <h1>Your Bailey and Charlie guide</h1>
+    <p>Every school morning, Claude writes a short show and Bailey and Charlie present it to your class. You copy it, paste it into the show page and press Play. It runs for three to four minutes.</p>
+    <p class="small">Use Chrome or Edge on your school laptop.</p>
+  </div>
+</header>
+
+<div class="links">
+  <a class="link" href="https://rkt00001.github.io/morning-show/"><small>The show (bookmark this one)</small><span>https://rkt00001.github.io/morning-show/</span></a>
+  <a class="link" href="https://rkt00001.github.io/morning-show/guide.html"><small>This guide (bookmark it too)</small><span>https://rkt00001.github.io/morning-show/guide.html</span></a>
+</div>
+
+<nav class="jump" aria-label="Jump to a part of this guide">
+  <a href="#once">Once, before your first show</a>
+  <a href="#morning">Every morning</a>
+  <a href="#type">What to type to Claude</a>
+  <a href="#during">During the show</a>
+  <a href="#wrong">If something goes wrong</a>
+  <a href="#safe">Keeping it safe</a>
+</nav>
+
+<!-- ============ ONCE ============ -->
+<section id="once">
+  <h2>Once, before your first class show <span class="tag">Allow about 20 minutes, on school wifi, a day or two before.</span></h2>
+  <ol class="once">
+    <li><div class="body">
+      <h3>Bookmark the show and this guide</h3>
+      <p>Open the show link above and press <span class="nw"><span class="kbd">Ctrl</span> + <span class="kbd">D</span></span> (on a Mac, <span class="nw"><span class="kbd">Cmd</span> + <span class="kbd">D</span></span>), then <span class="btn">Done</span>. Do the same for this guide.</p>
+    </div></li>
+
+    <li><div class="body">
+      <h3>Put the instructions in your Claude Project</h3>
+      <p>Rose made the Project <b>Bailey and Charlie</b>. Open the <a href="prompt.html"><b>instructions page</b></a>, press <b>Copy the instructions</b>, then in <b>claude.ai</b> press <b>Projects</b>, open <b>Bailey and Charlie</b> and open its instructions. Paste over everything there and press <b>Save</b>. Do this again when Rose says they are updated. Your timetable goes in your Monday chat instead (see "Every morning").</p>
+    </div></li>
+
+    <li><div class="body withpic">
+      <div>
+        <h3>Open the show and check Settings</h3>
+        <p>On the school laptop, open the show and press the cog at the top right.</p>
+        <ul>
+          <li><b>School location</b> should say <b>Wangaratta</b>. The dogs use it for the weather. If not, type your town and press <span class="btn">Find</span>.</li>
+          <li>Under <b>Bailey</b> and <b>Charlie</b>, press <span class="btn">Try</span> and listen to each dog.</li>
+          <li>Press <span class="btn">Done</span>. Leave the rest as it is.</li>
+        </ul>
+      </div>
+      <figure class="shot screenonly"><img src="guide-img/settings.webp" width="880" height="803" loading="lazy" alt="The Settings screen, showing School location Wangaratta, the Voice engine, and a Try button under each of Bailey and Charlie"><figcaption>The Settings screen.</figcaption></figure>
+    </div></li>
+
+    <li><div class="body">
+      <h3>The first time, the dogs' voices download</h3>
+      <p>On a computer with fast graphics, the first Try or Play shows <b>Downloading the dog voices</b> with a percentage (about 310 MB, first time only). It can take a few minutes, so leave the page open. After that, the voices stay on that laptop and a show is ready in about half a minute.</p>
+      <p>Other computers have nothing to download. They use their own voices (in Edge, the Australian ones sound best). The line under <b>Voice engine</b> in Settings says which you have.</p>
+      <p class="small">Use the same laptop and browser each day, and not a private window.</p>
+    </div></li>
+
+    <li class="full"><div class="body">
+      <h3>Test it through AirParrot to the TV, with sound</h3>
+      <p>Connect AirParrot to the classroom TV. On the show's home screen, press <span class="btn">Play</span> with nothing pasted. The dogs make a surprise show, so you do not need Claude for this test. Press <span class="kbd">F</span> for full screen. Check that the picture is on the TV and that you can hear Bailey and Charlie from the TV speakers. If there is no sound, see "If something goes wrong".</p>
+    </div></li>
+  </ol>
+</section>
+
+<!-- ============ MORNING ============ -->
+<section id="morning">
+  <h2>Every morning <span class="tag">Four steps. Start a few minutes early, for example while you mark the roll.</span></h2>
+  <ol class="steps">
+    <li>
+      <div class="what">
+        <h3>Ask Claude</h3>
+        <p><b>Monday:</b> open your Bailey and Charlie Project, start a <b>new chat</b> and type your request with the week's timetable (all five days, like the first picture). <b>Tuesday to Friday:</b> go back to <b>the same chat</b> and type your request. Put what is on today after <b>Today:</b>, and tell Claude any timetable changes in that chat. First names only, and nothing about health, behaviour or families.</p>
+      </div>
+      <div class="pic"><div class="claude"><p class="cap">Monday, in a new chat. You type:</p><div class="typebox"><span>Show for today. This week's timetable: Monday: 9:00 Literacy block; ... Tuesday: ... Today: Mia's birthday</span><span class="send" aria-hidden="true">&uarr;</span></div><p class="cap" style="margin-top:6px">Tuesday to Friday, same chat. You type:</p><div class="typebox"><span>Show for today. Today: spelling test, wet play</span><span class="send" aria-hidden="true">&uarr;</span></div></div></div>
+    </li>
+    <li>
+      <div class="what">
+        <h3>Copy</h3>
+        <p>Claude replies with the whole show inside a box. Press the <b>Copy</b> button at the top of the box. Do not select the words yourself.</p>
+      </div>
+      <div class="pic"><div class="claude"><p class="cap">In Claude. The reply is a box:</p><div class="cblock" aria-hidden="true"><div class="bar"><span>json</span><span class="copy">Copy</span></div><pre>{"show":"morning-show/1",
+"for_date":"2026-10-26",
+"hello":[{"dog":"Bailey",...</pre></div></div></div>
+    </li>
+    <li class="big">
+      <div class="what">
+        <h3>Paste</h3>
+        <p>Open the show from your bookmark. Press the blue <span class="btn">Paste today's show</span> button, or press <span class="nw"><span class="kbd">Ctrl</span> + <span class="kbd">V</span></span>. If Chrome asks to see what you copied, press <b>Allow</b>.</p>
+        <p>You will see <b>Got it! Today's show is saved.</b> The dogs start getting their voices ready while they wait.</p>
+      </div>
+      <figure class="shot pic"><img src="guide-img/home-pasted.webp" width="1280" height="720" loading="lazy" alt="The show's home screen after pasting, with a green message saying Got it! Today's show is saved. Press Play when you're ready."><figcaption>The home screen after pasting.</figcaption></figure>
+    </li>
+    <li class="big">
+      <div class="what">
+        <h3>Play</h3>
+        <p>Press the green <span class="btn">&#9654; Play</span> button. If the dogs' voices are being made, you will see the progress. When it says <b>The show is ready</b>, press <span class="btn">&#9654; Start the show</span>. With the laptop's own voices, the show starts by itself.</p>
+        <p>Press <span class="kbd">F</span> for full screen, then sit back for three to four minutes. The dogs look up the weather for your town themselves, so do not ask Claude for it.</p>
+      </div>
+      <div class="pic shots2">
+        <figure class="shot"><img src="guide-img/ready.webp" width="1280" height="720" loading="lazy" alt="The ready screen: The show is ready, All 28 lines are ready, About 3 minutes, with a green Start the show button"><figcaption>Press Start the show.</figcaption></figure>
+        <figure class="shot"><img src="guide-img/playing.webp" width="1280" height="720" loading="lazy" alt="The show playing: the Word of the day card showing the word curious, with Bailey and Charlie in a small picture and captions along the bottom"><figcaption>The show playing.</figcaption></figure>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ============ WHAT TO TYPE ============ -->
+<section id="type" class="pb">
+  <h2>What to type to Claude <span class="tag">Start with "Show for today." Put the rest after "Today:". Use one chat for the whole week.</span></h2>
+  <table>
+    <thead><tr><th>You type</th><th>What you get</th></tr></thead>
+    <tbody>
+      <tr><td class="say">Show for today.<br>Show for today. Today: Mia's birthday, spelling test, wet play</td><td>The first is a full show with no class news. The second adds class news, with confetti for the birthday. Wet play means indoor play at recess and lunch.</td></tr>
+      <tr><td class="say">Show for today. This week's timetable: Monday: 9:00 Literacy block; 10:40 Recess; 11:10 Maths; 12:30 Lunch; 1:30 Art with Mrs Chen (specialist). Tuesday: ... Today: Mia's birthday</td><td><b>Monday only.</b> Start a new chat and send this, with all five days written out (Monday to Friday, each as time, then name, with a semicolon between). Put (specialist) after a specialist class. Claude uses the timetable all week, in that chat.</td></tr>
+      <tr><td class="say">Show for tomorrow. Show for Monday. Show for 3 November.</td><td>A show for that day, with that day's timetable from your Monday message. On a Saturday or Sunday, Claude makes Monday's show.</td></tr>
+      <tr><td class="say">Today: swap art and PE. Assembly at 2:15.<br>From now on, art is on Thursday.</td><td>Tell Claude changes in the same chat. After "Today:" it is for that day only. After "From now on" it stays for the rest of the week. Give a time for anything new. On an excursion day, the timetable is left out unless you give times.</td></tr>
+      <tr><td class="say">Show for today. Today: 9:00 Literacy block; 10:40 Recess; 1:30 Indonesian (specialist). Library books due back.</td><td>A timetable after "Today:" works for that one day. Started a new chat midweek? Paste the week's timetable into it again, or the show leaves the timetable out.</td></tr>
+      <tr><td class="say">Today: Siobhan (Shiv-awn)'s birthday</td><td>Put the sound of a hard name in brackets. The dogs say it properly.</td></tr>
+      <tr><td class="say">Today: word is brilliant, fact about volcanoes, easier puzzle<br>Today: it is Book Week, make it all about books</td><td>The word, fact or puzzle you ask for, easier or harder. Or a theme day. For NAIDOC Week, send the Acknowledgement and any words you want used, as Claude will not make up language words.</td></tr>
+      <tr><td class="say">Today: star of the week Ava, for helping others<br>Today: countdown to the holidays on 18 December</td><td>Ava gets a big gold star, a cheer and a clap. A countdown is a big flipping number of sleeps, worked out from the date.</td></tr>
+      <tr><td class="say">Today: keep it short<br>Today: no puzzle</td><td>A shorter show (about two minutes), or a part left out. Hello and goodbye stay.</td></tr>
+      <tr><td class="say">Make the puzzle about fractions <span class="small">(in the same chat)</span></td><td>Claude sends the whole show again. Copy and paste it again to replace the old one.</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- ============ DURING ============ -->
+<section id="during">
+  <h2>During the show</h2>
+  <div class="during">
+    <div>
+      <h3>On the keyboard</h3>
+      <dl>
+        <dt><span class="kbd">Space</span></dt><dd>Pause or play</dd>
+        <dt><span class="kbd">&rarr;</span></dt><dd>Next part</dd>
+        <dt><span class="kbd">&larr;</span></dt><dd>Back a part</dd>
+        <dt><span class="kbd">F</span></dt><dd>Full screen</dd>
+        <dt><span class="kbd">C</span></dt><dd>Captions on or off</dd>
+        <dt><span class="kbd">Esc</span></dt><dd>Leave (it asks first)</dd>
+      </dl>
+    </div>
+    <div>
+      <h3>On the screen</h3>
+      <ul>
+        <li>Move the mouse to show five buttons at the bottom right.</li>
+        <li>Switching to another tab, or making the browser small, pauses the show. Press <span class="kbd">Space</span> when you come back.</li>
+        <li>At the end, press <span class="btn">Play again</span> or <span class="btn">Home</span>. A clicker works too.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WRONG ============ -->
+<section id="wrong">
+  <h2>If something goes wrong <span class="tag">Words in red are messages you may see on the screen.</span></h2>
+  <table>
+    <thead><tr><th>What you see</th><th>What to do</th></tr></thead>
+    <tbody>
+      <tr><td class="say">No sound from the TV</td><td>
+        <ul>
+          <li>Check the laptop and TV volume, and that AirParrot is sending the sound to the TV, not the laptop's speakers.</li>
+          <li>Press <span class="kbd">Space</span> in case the show is paused.</li>
+          <li>In Settings, set <b>Voice engine</b> to <b>Browser voices</b>, press <span class="btn">Try</span>, then <span class="btn">Done</span>.</li>
+        </ul>
+        <p class="small" style="margin-top:2px">If it says <span class="msg">it's captions only today</span>, the words still show. Close the browser, open it again and press Play.</p>
+      </td></tr>
+      <tr><td class="say">The voices are slow, or you see <span class="msg">This computer is slow at making the voices.</span></td><td>Press <span class="btn">Use simpler voices instead</span> (or <span class="btn">Start now with simpler voices</span>). The show uses the laptop's voices today. <span class="msg">The dog voices could not load, so we are using simpler voices.</span> needs nothing from you.</td></tr>
+      <tr><td class="say"><span class="msg">That doesn't look like a show script</span><div class="tbl-pic screenonly"><img src="guide-img/error.webp" width="1280" height="720" loading="lazy" alt="The home screen with a red message: That doesn't look like a show script. Copy the whole block from Claude and try again." style="width:100%;height:auto;border-radius:8px;border:1px solid var(--line)"></div></td><td>
+        <p>Go back to Claude, press its <b>Copy</b> button on the whole box, and paste again.</p>
+        <p class="small"><span class="msg">The script is cut off</span> or <span class="msg">That is only part of the show</span>: ask Claude <code>Please send the whole script again.</code> <span class="msg">There's no show in that</span>: Claude asked a question, so reply <code>Just send the show.</code> If it says <span class="msg">1 part could not be read</span>, the rest still plays.</p>
+      </td></tr>
+      <tr><td class="say">Paste does nothing, or a box says <b>Paste the show here</b></td><td>Press <b>Allow</b> if Chrome asks. If the box opens, click inside it, press <span class="nw"><span class="kbd">Ctrl</span> + <span class="kbd">V</span></span>, then <span class="btn">Done</span>.</td></tr>
+      <tr><td class="say">The dogs' mouths do not move</td><td>The show is usually paused, so press <span class="kbd">Space</span>. It also pauses if you switch to another tab or make the browser small. Still shut? Press <span class="kbd">F5</span> to reload the page, then <span class="btn">Play</span>. Your pasted show is still saved.</td></tr>
+      <tr><td class="say">No weather: the date line at the top has no temperature</td><td>Check the wifi and <b>School location</b> in Settings (type <b>Wangaratta</b>, press <span class="btn">Find</span>). The show plays fine without it.</td></tr>
+      <tr><td class="say">The wrong day's show: <span class="msg">This is Friday's show</span></td><td>It is an old show (or <span class="msg">The dogs say Monday, but the show is dated Tuesday...</span>), or Claude got the day wrong. Ask Claude again, for example <code>Show for today.</code> and paste the new one. A show pasted early for tomorrow is fine. It waits for its day.</td></tr>
+      <tr><td class="say">No time for Claude</td><td>Press <span class="btn">Play</span>. If it asks <span class="msg">Play Friday's show again, or a surprise show?</span> press <span class="btn">A surprise show</span>. The dogs use a word, fact, puzzle and tip they already have, and still do the weather.</td></tr>
+      <tr><td class="say">Something else went wrong</td><td>
+        <p>Send Rose a report. In the show, press the cog, then <b>Help Rose fix a problem</b>, then <span class="btn">Copy a report for Rose</span>, and paste it into a message to Rose. Or press <span class="btn">Save the report as a file</span> and attach the file. To show Rose what Claude said, press <b>Share</b> on that chat in claude.ai and send her the link.</p>
+      </td></tr>
+    </tbody>
+  </table>
+  <p class="small" style="margin-top:4px"><span class="msg">This browser is too old for the show</span>: update Chrome or Edge. Still stuck? Close the browser, open the show and press Play. A pasted show stays saved.</p>
+</section>
+
+<!-- ============ SAFE ============ -->
+<section id="safe">
+  <h2>Keeping it safe</h2>
+  <ul class="safe">
+    <li><b>First names only</b> in what you type, and nothing about health, behaviour or families. It goes to Claude, so take the care you would with any online tool.</li>
+    <li><b>Your scripts stay on your laptop.</b> The show page keeps each one in your browser and never sends it anywhere (only the weather, the town search and the voice download go online). <b>Clear saved show</b> in Settings wipes it.</li>
+    <li><b>Check your school's policy</b> on AI-made material for class use, and on putting children's names into online tools.</li>
+    <li><b>You are still the teacher.</b> Claude can slip up on a fact or a joke. If something does not seem right, press <span class="kbd">&rarr;</span> to skip it.</li>
+  </ul>
+</section>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,113 @@
+{
+  "show": "morning-show/1",
+  "for_date": "2026-10-26",
+  "hello": [
+    {"dog": "Bailey", "text": "Good morning, Grade Three and Four! It's Monday the twenty-sixth of October!"},
+    {"dog": "Charlie", "text": "Morning, everyone. I'm Charlie, and this is my little brother Bailey. He just tried to share his breakfast with his reflection."},
+    {"dog": "Bailey", "text": "That other dog looked hungry! Let's get started!"}
+  ],
+  "segments": [
+    {
+      "type": "word",
+      "word": "curious",
+      "meaning": "wanting to know or learn about something",
+      "sentence": "Bailey was curious about the noise in the cupboard.",
+      "lines": [
+        {"dog": "Charlie", "text": "Our word of the day is curious. Can you say it with me? Curious!"},
+        {"dog": "Bailey", "text": "Curious means {meaning}wanting to know or learn about something."},
+        {"dog": "Charlie", "text": "Like this: {sentence}Bailey was curious about the noise in the cupboard. It was the vacuum cleaner. He ran away."}
+      ]
+    },
+    {
+      "type": "fact",
+      "title": "Blue whales grow about 30 metres long",
+      "emoji": "🐋",
+      "picture": "whale",
+      "number": {"value": 30, "label": "metres long"},
+      "lines": [
+        {"dog": "Bailey", "text": "Fact of the day! A blue whale can grow to around {number}thirty metres long!"},
+        {"dog": "Charlie", "text": "That's longer than two school buses. And it's a mammal, so it breathes air, just like us."},
+        {"dog": "Bailey", "text": "Around thirty metres! I'm about thirty centimetres. That's nearly the same, right?{laugh}"}
+      ]
+    },
+    {
+      "type": "puzzle",
+      "question": "I'm soft and squishy, and Charlie rests his head on me every night. What am I?",
+      "answer": "A pillow",
+      "choices": ["A bowl", "A pillow", "A ball"],
+      "ask": [
+        {"dog": "Charlie", "text": "Puzzle time. I'm soft and squishy, and Charlie rests his head on me every night. What am I?"},
+        {"dog": "Bailey", "text": "Are you {choices}a bowl, a pillow, or a ball? Have a think!"}
+      ],
+      "reveal": [
+        {"dog": "Charlie", "text": "It's a pillow! My favourite one is fluffy and blue."},
+        {"dog": "Bailey", "text": "I like it too. I sneak onto it when you're not looking."}
+      ]
+    },
+    {
+      "type": "tip",
+      "text": "Fill your water bottle before recess",
+      "emoji": "💧",
+      "lines": [
+        {"dog": "Charlie", "text": "Here's my tip for today. {tip}Fill up your water bottle before recess."},
+        {"dog": "Bailey", "text": "Then you'll have lots of energy for running around. Like me!"}
+      ]
+    },
+    {
+      "type": "news",
+      "items": [
+        {"text": "Happy birthday, Mia!", "emoji": "🎂", "birthday": true},
+        {"text": "Library books due back today", "emoji": "📚", "birthday": false},
+        {"text": "Bring your hat for outside play", "emoji": "🧢", "birthday": false}
+      ],
+      "lines": [
+        {"dog": "Bailey", "text": "Class news! {1}It's Mia's birthday today! Happy birthday, Mia!"},
+        {"dog": "Charlie", "text": "{2}Library books are due back today, so check your bag."},
+        {"dog": "Bailey", "text": "And {3}don't forget your hat. No hat, no play!"}
+      ]
+    },
+    {
+      "type": "countdown",
+      "items": [
+        {"count": 3, "unit": "sleeps", "until": "the sports carnival", "date": "2026-10-29", "emoji": "🏃"},
+        {"count": 53, "unit": "sleeps", "until": "the holidays", "date": "2026-12-18", "emoji": "🏖️"}
+      ],
+      "lines": [
+        {"dog": "Charlie", "text": "Countdown time! Only {1}three sleeps until the sports carnival."},
+        {"dog": "Bailey", "text": "And {2}fifty-three sleeps until the holidays! I'm practising my running already."}
+      ]
+    },
+    {
+      "type": "star",
+      "items": [
+        {"name": "Ava", "reason": "for helping others"}
+      ],
+      "lines": [
+        {"dog": "Bailey", "text": "And now, the moment you've all been waiting for. Our star of the week is {1}Ava!"},
+        {"dog": "Charlie", "text": "Ava, thank you for always helping others. That's what a great friend does. Give Ava a big clap, everyone!"}
+      ]
+    },
+    {
+      "type": "schedule",
+      "items": [
+        {"time": "9:00", "label": "Literacy block", "special": false},
+        {"time": "10:00", "label": "Independent reading", "special": false},
+        {"time": "10:40", "label": "Recess", "special": false},
+        {"time": "11:10", "label": "Maths", "special": false},
+        {"time": "12:30", "label": "Lunch", "special": false},
+        {"time": "1:30", "label": "Art with Mrs Chen", "special": true},
+        {"time": "2:30", "label": "Library visit", "special": false}
+      ],
+      "lines": [
+        {"dog": "Bailey", "text": "Something special today! After lunch it's {6}art with Mrs Chen!"},
+        {"dog": "Charlie", "text": "I hope we paint dogs. I'll sit very still for you."}
+      ]
+    }
+  ],
+  "signoff": [
+    {"dog": "Charlie", "text": "Before we go, let's take three slow breaths together. Breathe in. And breathe out."},
+    {"dog": "Bailey", "text": "Breathe in. And breathe out."},
+    {"dog": "Charlie", "text": "Breathe in. And breathe out."},
+    {"dog": "Bailey", "text": "Now we're calm, and ready to learn. Have a brilliant day, everyone. See you tomorrow. Bye!"}
+  ]
+}

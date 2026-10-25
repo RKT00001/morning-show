@@ -1,0 +1,61 @@
+{
+ "desk": {
+  "src": "assets/real/desk.webp",
+  "w": 2752,
+  "h": 1536
+ },
+ "dogs": {
+  "Bailey": {
+   "eyes": [
+    650,
+    600,
+    1050,
+    790
+   ],
+   "mouth": [
+    700,
+    790,
+    1030,
+    1060
+   ],
+   "sprites": {
+    "ah": "assets/real/bailey-ah.webp",
+    "grin": "assets/real/bailey-grin.webp",
+    "blink": "assets/real/bailey-blink.webp"
+   },
+   "tag_x": 0.314,
+   "_boxes_are": "[x0,y0,x1,y1] in desk pixels; ah and grin cover \"mouth\", blink covers \"eyes\"; sprites have soft alpha edges"
+  },
+  "Charlie": {
+   "eyes": [
+    1720,
+    490,
+    2180,
+    720
+   ],
+   "mouth": [
+    1760,
+    740,
+    2130,
+    1010
+   ],
+   "sprites": {
+    "ah": "assets/real/charlie-ah.webp",
+    "grin": "assets/real/charlie-grin.webp",
+    "blink": "assets/real/charlie-blink.webp"
+   },
+   "tag_x": 0.707,
+   "_boxes_are": "[x0,y0,x1,y1] in desk pixels; ah and grin cover \"mouth\", blink covers \"eyes\"; sprites have soft alpha edges"
+  }
+ },
+ "wave": "assets/real/wave.webp",
+ "poses": {
+  "surprised": "assets/real/poses/surprised.webp",
+  "laughing": "assets/real/poses/laughing.webp",
+  "thinking": "assets/real/poses/thinking.webp"
+ },
+ "idle": {
+  "webm": "assets/real/poses/idle.webm",
+  "mp4": "assets/real/poses/idle.mp4"
+ }
+}

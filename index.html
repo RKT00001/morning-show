@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+<meta charset="utf-8">
+<meta name="ms-version" content="ed1a655">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Bailey and Charlie Show</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Ccircle cx=%2750%27 cy=%2750%27 r=%2748%27 fill=%27%23ffb86b%27/%3E%3Ccircle cx=%2735%27 cy=%2742%27 r=%276%27/%3E%3Ccircle cx=%2765%27 cy=%2742%27 r=%276%27/%3E%3Cellipse cx=%2750%27 cy=%2760%27 rx=%2710%27 ry=%278%27/%3E%3C/svg%3E">
+<meta name="robots" content="noindex, nofollow">
+<link rel="preload" href="fonts/fredoka-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/lexend-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="player.css?v=ed1a655">
+</head>
+<body>
+<div id="frame">
+  <div id="stage">
+    <div id="bg"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+
+    <div id="card" class="card" hidden></div>
+
+    <div id="desk" class="desk studio">
+      <img id="deskbase" alt="" draggable="false">
+      <div id="deskfaces"></div>
+      <div id="tags"></div>
+    </div>
+
+    <div id="breath" hidden><span class="bt"></span></div>
+    <div id="studioTitle" hidden></div>
+    <div id="fx"></div>
+
+    <!-- Home -->
+    <section id="home" class="screen">
+      <button class="gear" id="gearBtn" aria-label="Settings" title="Settings">&#9881;</button>
+      <div class="h-top">
+        <h1 id="homeName">The Bailey and Charlie Show</h1>
+        <div class="h-date"><span id="homeDate"></span><span id="homeWeather" hidden></span></div>
+      </div>
+      <div class="h-panel">
+        <div class="h-buttons">
+          <button class="big b-paste" id="pasteBtn">Paste today's show</button>
+          <button class="big b-play" id="playBtn">&#9654; Play</button>
+        </div>
+        <div class="h-status" id="homeStatus"></div>
+        <div class="h-warm" id="homeWarm" hidden></div>
+      </div>
+    </section>
+
+    <!-- Getting the show ready -->
+    <section id="ready" class="screen" hidden>
+      <div class="r-panel">
+        <div class="r-title" id="readyTitle">Getting the show ready</div>
+        <div class="r-bar"><div class="r-fill" id="readyFill"></div></div>
+        <div class="r-count" id="readyCount"></div>
+        <div class="r-len" id="readyLen"></div>
+        <div class="r-engine" id="readyEngine"></div>
+        <div class="r-buttons">
+          <button class="big b-play" id="startBtn" hidden>&#9654; Start the show</button>
+          <button class="small-link" id="simplerBtn" hidden>Use simpler voices instead</button>
+          <button class="small-link" id="readyBack">Back</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- The show -->
+    <section id="showui" class="screen" hidden>
+      <div id="captions"><span class="who"></span><span class="txt"></span></div>
+      <div id="hold" hidden>One moment&hellip;</div>
+      <div id="controls">
+        <button id="cPrev" aria-label="Previous" title="Previous (Left)">&#9198;</button>
+        <button id="cPlay" aria-label="Pause" title="Play or pause (Space)">&#10074;&#10074;</button>
+        <button id="cNext" aria-label="Next" title="Next (Right)">&#9197;</button>
+        <button id="cFull" aria-label="Full screen" title="Full screen (F)">&#9974;</button>
+        <button id="cHome" aria-label="Home" title="Home (Esc)">&#8962;</button>
+      </div>
+    </section>
+
+    <!-- The end -->
+    <section id="endscreen" class="screen" hidden>
+      <div class="e-title">Have a great day!</div>
+      <div class="e-buttons">
+        <button class="big b-play" id="againBtn">&#8635; Play again</button>
+        <button class="big b-home" id="homeBtn">Home</button>
+      </div>
+    </section>
+
+    <div id="wipe"></div>
+
+    <div id="confirm" class="dialog" hidden>
+      <div class="d-box">
+        <div class="d-text">Leave the show?</div>
+        <div class="d-buttons">
+          <button class="big b-play" id="stayBtn">Stay</button>
+          <button class="big b-home" id="leaveBtn">Leave</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="choose" class="dialog" hidden>
+      <div class="d-box">
+        <div class="d-text" id="chooseText">Play Friday's show again, or a surprise show?</div>
+        <div class="d-buttons">
+          <button class="big b-play" id="chooseOld">Friday's show</button>
+          <button class="big b-paste" id="chooseNew">A surprise show</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="toast" hidden></div>
+  </div>
+</div>
+
+<!-- Paste box, when the clipboard cannot be read -->
+<div id="pastebox" class="modal" hidden>
+  <div class="m-panel">
+    <h2>Paste the show here</h2>
+    <textarea id="pasteArea" placeholder="Paste the whole block from Claude here" spellcheck="false"></textarea>
+    <div class="m-buttons">
+      <button class="big b-play" id="pasteDone">Done</button>
+      <button class="big b-home" id="pasteCancel">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings -->
+<div id="settings" class="modal" hidden>
+  <div class="m-panel s-panel" role="dialog" aria-label="Settings">
+    <h2>Settings</h2>
+
+    <label class="s-row"><span>Show name</span><input type="text" id="sName" maxlength="40"></label>
+
+    <div class="s-row"><span>School location</span>
+      <div class="s-loc"><b id="sLocName"></b>
+        <div class="s-find"><input type="text" id="sFind" placeholder="Find a town"><button id="sFindBtn">Find</button></div>
+        <div id="sFindOut" class="s-hint"></div>
+      </div>
+    </div>
+
+    <label class="s-row"><span>Voice engine</span>
+      <select id="sEngine">
+        <option value="auto">Auto (best available)</option>
+        <option value="kokoro">Kokoro (the dog voices)</option>
+        <option value="browser">Browser voices</option>
+        <option value="captions">Captions only</option>
+      </select>
+    </label>
+    <div class="s-hint" id="sVoiceStatus"></div>
+    <div class="s-hint" id="sKokoroSkip" hidden>The dog voices were too slow or failed on this computer, so it uses simpler voices. <button id="sKokoroRetry">Try the dog voices again</button></div>
+    <div class="s-hint"><button id="sWarm">Get the dog voices ready now</button></div>
+
+    <div class="s-dogs">
+      <div class="s-dog" data-dog="Bailey">
+        <h3>Bailey</h3>
+        <label>Voice <select class="sVoice"></select></label>
+        <label>Younger <input type="range" class="sLift" min="1" max="1.7" step="0.01"></label>
+        <button class="sTry">Try</button>
+      </div>
+      <div class="s-dog" data-dog="Charlie">
+        <h3>Charlie</h3>
+        <label>Voice <select class="sVoice"></select></label>
+        <label>Younger <input type="range" class="sLift" min="1" max="1.7" step="0.01"></label>
+        <button class="sTry">Try</button>
+      </div>
+    </div>
+
+    <label class="s-check"><input type="checkbox" id="sCaps"> Captions</label>
+    <label class="s-check"><input type="checkbox" id="sMusic"> Music</label>
+    <label class="s-row"><span>Puzzle thinking time: <b id="sThinkVal">10</b> seconds</span>
+      <input type="range" id="sThink" min="5" max="20" step="1"></label>
+
+    <div class="s-help">
+      <h3>Help Rose fix a problem</h3>
+      <div class="s-hint">If something went wrong, send Rose a report. It stays on this laptop until you send it.</div>
+      <div class="s-helpbtns">
+        <button id="sReportCopy">Copy a report for Rose</button>
+        <button id="sReportSave">Save the report as a file</button>
+      </div>
+      <div class="s-hint" id="sReportOut" role="status" aria-live="polite"></div>
+    </div>
+
+    <div class="m-buttons">
+      <button id="sClear">Clear saved show</button>
+      <button class="big b-play" id="sClose">Done</button>
+    </div>
+  </div>
+</div>
+
+<!-- The report for Rose, when the clipboard cannot be written -->
+<div id="reportbox" class="modal" hidden>
+  <div class="m-panel">
+    <h2>Copy the report</h2>
+    <div class="s-hint r-hint">Copying didn't work on its own. The report is selected below: press Ctrl+C (on a Mac, Cmd+C) to copy it, then paste it into a message to Rose.</div>
+    <textarea id="reportArea" readonly spellcheck="false" aria-label="The report for Rose"></textarea>
+    <div class="m-buttons">
+      <button class="big b-play" id="reportDone">Done</button>
+    </div>
+  </div>
+</div>
+
+<script src="bank.js?v=ed1a655"></script>
+<script src="voices.js?v=ed1a655"></script>
+<script src="player.js?v=ed1a655"></script>
+</body>
+</html>
